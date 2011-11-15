@@ -1,0 +1,11 @@
+E:\csharp\HRManagement\HRManagement.Test\bin\Debug\HRManagement.Test.dll
+E:\csharp\HRManagement\HRManagement.Test\bin\Debug\HRManagement.Test.pdb
+E:\csharp\HRManagement\HRManagement.Test\bin\Debug\HRManagement.dll
+E:\csharp\HRManagement\HRManagement.Test\bin\Debug\nunit.framework.dll
+E:\csharp\HRManagement\HRManagement.Test\bin\Debug\nunit.mocks.dll
+E:\csharp\HRManagement\HRManagement.Test\bin\Debug\pnunit.framework.dll
+E:\csharp\HRManagement\HRManagement.Test\bin\Debug\HRManagement.pdb
+E:\csharp\HRManagement\HRManagement.Test\bin\Debug\nunit.framework.xml
+E:\csharp\HRManagement\HRManagement.Test\obj\Debug\ResolveAssemblyReference.cache
+E:\csharp\HRManagement\HRManagement.Test\obj\Debug\HRManagement.Test.dll
+E:\csharp\HRManagement\HRManagement.Test\obj\Debug\HRManagement.Test.pdb

@@ -1,0 +1,7 @@
+E:\csharp\HRManagement\HRManagement\bin\HRManagement.dll
+E:\csharp\HRManagement\HRManagement\bin\HRManagement.pdb
+E:\csharp\HRManagement\HRManagement\bin\EntityFramework.dll
+E:\csharp\HRManagement\HRManagement\bin\EntityFramework.xml
+E:\csharp\HRManagement\HRManagement\obj\Debug\ResolveAssemblyReference.cache
+E:\csharp\HRManagement\HRManagement\obj\Debug\HRManagement.dll
+E:\csharp\HRManagement\HRManagement\obj\Debug\HRManagement.pdb
