@@ -3,6 +3,14 @@
 }
 
 <h2>@ViewBag.Message</h2>
+<div id="testAjax">
+    @Ajax.ActionLink("Show me the money", 
+                     "Hello", new AjaxOptions{
+                        UpdateTargetId = "testAjax",
+                        HttpMethod = "GET",
+                        InsertionMode = InsertionMode.Replace
+                     })
+</div>
 <p>
     To learn more about ASP.NET MVC visit <a href="http://asp.net/mvc" title="ASP.NET MVC Website">http://asp.net/mvc</a>.
 </p>
