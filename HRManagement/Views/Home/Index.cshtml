@@ -2,15 +2,30 @@
     ViewBag.Title = "Home Page";
 }
 
-<h2>@ViewBag.Message</h2>
+<h2></h2>
 <div id="testAjax">
     @Ajax.ActionLink("Show me the money", 
                      "Hello", new AjaxOptions{
                         UpdateTargetId = "testAjax",
                         HttpMethod = "GET",
-                        InsertionMode = InsertionMode.Replace
+                        InsertionMode = InsertionMode.Replace,
+                        LoadingElementId = "progress"
                      })
 </div>
+    <div id="progress">
+        <img src="../../Content/images/ajax-loader.gif" alt="Loading..." />
+    </div>
 <p>
-    To learn more about ASP.NET MVC visit <a href="http://asp.net/mvc" title="ASP.NET MVC Website">http://asp.net/mvc</a>.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+    Etiam porta rutrum erat a dignissim. Donec dignissim luctus luctus. 
+    Ut non quam in diam consectetur ullamcorper vitae eget ante. 
+    Phasellus eleifend ligula ac dui adipiscing sed viverra augue porta. 
+    Sed aliquet magna eget mauris tristique et faucibus neque sodales. 
+    Nam lobortis quam eget lacus adipiscing blandit. Aenean vel felis 
+    quis tellus varius fermentum nec nec diam. Aliquam convallis porta pharetra. 
+    Donec placerat suscipit purus in cursus. Ut massa arcu, interdum at cursus at,
+    feugiat in nisi. Class aptent taciti sociosqu ad litora torquent per conubia nostra, 
+    per inceptos himenaeos. Etiam tristique neque in justo tincidunt hendrerit non vel lorem. 
+    Sed imperdiet facilisis erat non pulvinar. In eget lectus lectus, quis vehicula lacus. 
+    In vitae rhoncus felis. Aenean molestie sollicitudin vulputate.
 </p>

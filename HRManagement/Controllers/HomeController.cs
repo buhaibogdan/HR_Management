@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Threading;
+using HRManagement.Models;
 
 namespace HRManagement.Controllers
 {
@@ -11,13 +12,18 @@ namespace HRManagement.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Message = "Welcome to ASP.NET MVC!";
+            Session["DaysRequested"] = null;   
+            return View();
+             
+        }
 
+        public ActionResult Help()
+        {   
             return View();
         }
 
-        public ActionResult About()
-        {   
+        public ActionResult Leave()
+        {
             return View();
         }
 

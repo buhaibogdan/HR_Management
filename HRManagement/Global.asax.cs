@@ -4,6 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using System.Data.Entity.Validation;
+using System.Data.Entity;
+using HRManagement.Models;
+using HRManagement.Models.Entities;
 
 namespace HRManagement
 {
@@ -31,10 +35,40 @@ namespace HRManagement
 
         protected void Application_Start()
         {
+            Database.SetInitializer(new HrDBInitializer());
+
             AreaRegistration.RegisterAllAreas();
 
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
+        }
+    }
+    public class HrDBInitializer : DropCreateDatabaseIfModelChanges<HrDB>
+    {
+        protected override void Seed(HrDB context)
+        {
+            base.Seed(context);
+
+            context.RequestTypes.Add(new RequestType
+            {
+                Id = 1,
+                Name = "Payed",
+                Visible = 1
+            });
+            context.RequestTypes.Add(new RequestType
+            {
+                Id = 2,
+                Name = "Medical",
+                Visible = 1
+            });
+            context.RequestTypes.Add(new RequestType
+            {
+                Id = 3,
+                Name = "Maternal",
+                Visible = 1
+            });
+
+            context.SaveChanges();
         }
     }
 }
