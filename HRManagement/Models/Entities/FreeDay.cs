@@ -8,6 +8,6 @@ namespace HRManagement.Models
     public class FreeDay
     {
         public int Id { get; set; }
-        public DateTime date { get; set; }
+        public DateTime Date { get; set; }
     }
 }

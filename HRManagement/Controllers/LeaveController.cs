@@ -18,8 +18,8 @@ namespace HRManagement.Controllers
         
         public ActionResult Index()
         {
+            var x = _db.RequestedDays;
             var model = _db.RequestTypes;
-            
             return View(model);
         }
 
@@ -63,6 +63,34 @@ namespace HRManagement.Controllers
                     return 1;
                 }
                 return 2;
+            }
+            return 0;
+        }
+
+        [HttpPost]
+        [WebMethod(EnableSession = true)]
+        public int saveRequest(int type, string user_comment)
+        {
+            if (Session["DaysRequested"] != null)
+            {
+                var LeaveRequest = _db.LeaveRequests;
+                var RequestedDays = _db.RequestedDays;
+                List<DateTime> DaysRequested = Session["DaysRequested"] as List<DateTime>;
+                LeaveRequest newLeaveRequest = new LeaveRequest()
+                {
+                    RequestTypeId = type,
+                    Comment = user_comment
+                };
+                LeaveRequest.Add(newLeaveRequest);
+                _db.SaveChanges();
+                foreach (var date in DaysRequested)
+                {
+                    RequestedDay reqDay = new RequestedDay(date);
+                    reqDay.LeaveRequestId = newLeaveRequest.Id;
+                    RequestedDays.Add(reqDay);
+                }
+                _db.SaveChanges();
+                return 1;
             }
             return 0;
         }

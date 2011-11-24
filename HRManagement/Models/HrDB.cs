@@ -16,5 +16,6 @@ namespace HRManagement.Models
         public DbSet<Employee> Employees{ get; set; }
         public DbSet<GroupRight> GroupRights{ get; set; }
         public DbSet<FreeDay> FreeDays{ get; set; }
+        public DbSet<RequestedDay> RequestedDays { get; set; } 
     }
 }

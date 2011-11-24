@@ -8,11 +8,15 @@ namespace HRManagement.Models.Entities
 {
     public class GroupRight
     {
-        [Key]
-        [Column("id_group", Order=0)]
-        public int Id_Group { get; set; }
-        [Key]
-        [Column("id_right", Order = 1)]
-        public int Id_Right { get; set; }
+        [Key, ForeignKey("Group")]
+        [Column(Order = 0)]
+        public int GroupId { get; set; }
+
+        [Key, ForeignKey("Right")]
+        [Column(Order = 1)]
+        public int RightId { get; set; }
+
+        public Group Group { get; set; }
+        public Right Right { get; set; }
     }
 }

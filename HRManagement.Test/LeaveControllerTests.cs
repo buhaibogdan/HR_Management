@@ -29,7 +29,7 @@ namespace HRManagement.Test
         public void shouldAddDateToSession()
         {
             var controller = new LeaveController();
-            var result = controller.Register(1, 1, 2001);
+            //var result = controller.Register(1, 1, 2001);
             //var list = controller.ViewBag.DaysRequested;
             Assert.IsTrue(true);
         }

@@ -76,6 +76,7 @@
     <Compile Include="Models\Entities\FreeDay.cs" />
     <Compile Include="Models\Entities\Group.cs" />
     <Compile Include="Models\Entities\GroupRight.cs" />
+    <Compile Include="Models\Entities\RequestedDay.cs" />
     <Compile Include="Models\Entities\Right.cs" />
     <Compile Include="Models\Entities\User.cs" />
     <Compile Include="Models\HrDB.cs" />

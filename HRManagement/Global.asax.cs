@@ -8,6 +8,7 @@ using System.Data.Entity.Validation;
 using System.Data.Entity;
 using HRManagement.Models;
 using HRManagement.Models.Entities;
+using System.Data.SqlClient;
 
 namespace HRManagement
 {
@@ -43,7 +44,7 @@ namespace HRManagement
             RegisterRoutes(RouteTable.Routes);
         }
     }
-    public class HrDBInitializer : DropCreateDatabaseIfModelChanges<HrDB>
+    public class HrDBInitializer : DropCreateDatabaseAlways<HrDB>
     {
         protected override void Seed(HrDB context)
         {

@@ -37,4 +37,19 @@
 
     }
 
+    $("#requestForm").submit(function () {
+        var typeRequest = $("#requestForm :selected").val();
+        var user_comment = $('#requestForm textarea').val();
+        $.ajax({
+            url: "leave/saveRequest",
+            type: "POST",
+            data: "type=" + typeRequest + "&user_comment=" + user_comment,
+            complete: function(xhr){
+                console.log(xhr);
+            }
+        });
+
+        return false;
+    });
+
 })
