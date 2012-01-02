@@ -194,21 +194,20 @@ textarea {
 input[type="text"], 
 input[type="password"] {
     border: 1px solid #ccc;
-    padding: 2px;
-    font-size: 1.2em;
+    padding: 1px;
     color: #444;
     width: 200px;
 }
 
 select {
     border: 1px solid #ccc;
-    padding: 2px;
-    font-size: 1.2em;
+    padding: 1px;
     color: #444;
 }
 
-input[type="submit"] {
-    font-size: 1.2em;
+input[type="submit"],
+input[type="button"] 
+{
     padding: 5px;
 }
 
@@ -332,57 +331,114 @@ div#title {
 /* Styles for Leave Module
 -----------------------------------------------------------*/
 /*layout*/
-#history
+#leftPane
 {
     float:right;
-    width: 30%;
-    border: 1px solid red;
+    width:40%;
+}
+
+#request_info
+{
+    margin-top:2em;
+    clear: right;
 }
 
 #request
 {
-    width: 60%;
-    border:1px solid blue;
+    width: 55%;
 }
 #daysRequested
 {
-    float: right;
-    width: 150px;
+    height: 80px;
+    width: 90%;
+    padding: 4px;
+    background-color:#EBEBB0;
+    overflow:auto;
+    border-radius: 7px 7px 7px 7px;
+    -webkit-border-radius: 7px 7px 7px 7px;
+    -moz-border-radius: 7px 7px 7px 7px ;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 #leftside
 {
     float: left;
+    clear:none;
+    width:100%;
 }
-.listRequest li.listElementRequest
+.listRequest .listElementRequest
 {
     border: 1px solid #C5E8ED;
     background-color: #D8EFF2;
     margin-top: 2px;
     padding: 2px;
+    display:inline-block;
+    width: 100px;
 }
 
-.listRequest li.listElementRequest:hover
+.listRequest .listElementRequest:hover
 {
     background-color: #C5E8ED;
 }
    
 .listRequest
 {
-    list-style-type: none;
-    width: 80%;
     font-weight: bold;
 }
 .close-button
 {
-    text-align: right;
     position: relative;
-    top: 3px;
+    top: 1px;
     cursor: pointer;
 }
 .list-date
 {
     display: inline-block;
-    width: 80%;
     margin-left: 3px;    
 }
+td.datesSelect
+{
+    vertical-align: top;
+    height: 160px;
+    overflow:auto;
+}
+table.myRequests
+{
+    width: 100%;    
+}
+td.opIcons
+{
+    width:43px;    
+}
+#history
+{
+    height: 200px;
+    overflow: auto;    
+}
+/*-------------col and rows--------------*/
+.item-name
+{
+    width:80px;
+    display:inline-block;
+    margin:1px 2px 1px 0px;
+}
 
+.item-value
+{
+    display:inline-block;
+}
+.ui-datepicker
+{
+    width:14em !important;    
+}
+input.ui-button
+{
+    font-size: smaller;
+    margin: 7px 5px;
+}
+
+.bigMessage
+{
+    font-size:x-large;
+    font-family: Verdana, Sans-Serif;    
+}

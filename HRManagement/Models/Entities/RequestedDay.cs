@@ -7,11 +7,14 @@ using System.ComponentModel.DataAnnotations;
 namespace HRManagement.Models.Entities
 {
     public class RequestedDay
-    {//this class takes advantace of the implicit conventions of EF 4.1
-        public int Id { get; set; }
-        public int LeaveRequestId { get; set; }
-        public DateTime Day { get; set; }
+    {
+        public virtual int Id { get; set; }
+        [ForeignKey("LeaveRequest")]
+        public virtual int LeaveRequestId { get; set; }
+        public virtual DateTime Day { get; set; }
+        public virtual LeaveRequest LeaveRequest { get; set; }
 
+        public RequestedDay() { }
         public RequestedDay(DateTime newDay)
         {
             Day = newDay;

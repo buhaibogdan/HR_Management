@@ -1,0 +1,13 @@
+﻿@model HRManagement.Models.LeaveForm
+
+<div id="request_info">
+    <div><span class="item-name">Type</span><span class="item-value">@Model.LeaveRequest.RequestType.Name</span></div>
+    <div><span class="item-name">Status</span><span class="item-value">@Model.LeaveRequest.StatusText</span></div>
+    <div><span class="item-name">Days</span><span class="item-value">
+    @foreach (var item in Model.LeaveRequest.RequestedDays)
+    { 
+        @item.Day.Day<text>/</text>@item.Day.Month<text>&nbsp;&nbsp;</text>
+    }
+    </span></div>
+    <div><span class="item-name">Comment</span><span class="item-value">@Model.LeaveRequest.Comment</span></div>
+</div>

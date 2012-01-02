@@ -10,12 +10,23 @@ namespace HRManagement.Models.Entities
     {
         public int Id { get; set; }
         [Required, MaxLength(50)]
-        public string Username { get; set; }
+        public string Email { get; set; }
         [Required, MaxLength(80)]
         public string Password { get; set; }
         [Required]
         public int GroupId { get; set; }
 
         public Employee Employee { get; set; }
+
+        public static bool validateCredentials(string email, string pass)
+        {
+            HrDB db = new HrDB();
+            User authUser = db.Users.Single(u => (u.Email == email && u.Password == pass));
+            if (null != authUser)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

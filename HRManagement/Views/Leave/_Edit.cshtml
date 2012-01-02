@@ -1,0 +1,58 @@
+﻿@model HRManagement.Models.LeaveForm
+           
+@if (this.ViewContext.FormContext == null)
+{
+    this.ViewContext.FormContext = new FormContext();
+}
+<div id="request_info">
+@using (Html.BeginForm("Edit", "Leave", FormMethod.Post, new { name = "myRequestEdit", id = "myRequestEdit" }))
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>LeaveRequest</legend>
+
+        @Html.HiddenFor(model => model.LeaveRequest.Id)
+        <div>
+        <span class="item-name">
+            Status
+        </span>
+        <span class="item-value">
+            @Model.LeaveRequest.StatusText
+        </span>
+        </div>
+        <div>
+        <span class="item-name">
+            Type
+        </span>
+        <span class="item-value">
+            @Html.DropDownListFor(model => model.RequestType, new SelectList(Model.RequestType, "Id", "Name"))
+            @Html.ValidationMessageFor(model => model.RequestType)
+        </span>
+        </div>
+        <div><span class="item-name">Days</span><span class="item-value">
+        @foreach (var item in Model.LeaveRequest.RequestedDays)
+        { 
+            @item.Day.Day<text>/</text>@item.Day.Month<text>&nbsp;&nbsp;</text>
+        }
+        </span></div>
+        <div class="item-name">
+            @Html.LabelFor(model => model.LeaveRequest.Comment)
+        </div>
+        <div class="editor-field">
+            @Html.TextAreaFor(model => model.LeaveRequest.Comment, new { rows = "3", style = "width:95%" })
+            @Html.ValidationMessageFor(model => model.LeaveRequest.Comment)
+        </div>
+        <p>
+            <input type="submit" value="Save" id="submitButton" />
+            <input type="button" value="Cancel" id="cancelButton"/>
+            
+            @{
+            if (1 != Model.LeaveRequest.Status)
+            { 
+                <input type="button" value="Remove" id="removeButton"/>
+            }
+            }
+        </p>
+    </fieldset>
+}
+</div>

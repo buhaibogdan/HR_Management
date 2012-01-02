@@ -1,38 +1,54 @@
-﻿@model IEnumerable<HRManagement.Models.Entities.RequestType>
+﻿@model HRManagement.Models.LeaveForm
 
 @{
     ViewBag.Title = "Leave";
+    if (this.ViewContext.FormContext == null)
+    {
+        this.ViewContext.FormContext = new FormContext();
+    }
 }
 
-<h2>Leave Module</h2>
 
+<h2>Leave Module</h2>
+<div id="leftPane">
 <div id="history">
-    history list here
+    <h3>My requests</h3>
+    @Html.Action("MyRequests")
+</div>
+<div id="request_info"></div>
 </div>
 
 <div id="request">
-    
-    <form action="" method="POST" id="requestForm">
-        <div id="daysRequested"></div>
+
+    @using (Html.BeginForm("saveRequest", "Leave", FormMethod.Post, new { id = "requestForm" }))
+    {
         <div id="leftside">
-        <p>Total free payed days available: 30</p>
-        <p>I want to take some days of between:</p>
-                <div id="datepicker"></div>
-            <p>
-            Type of request:
+        @Html.ValidationSummary(true)
+        <p>Total free payed days available: <span id="nrOfAvailableDays">30</span></p>
+        <p>Select the days you want free:</p>
+        <div id="datepicker"></div>
+        Free days requested:
+        <div id="daysRequested">
+            <span class="bigMessage">No days selected.</span>
+         </div>
+
+            <p>Type: 
             <select name="request_type">
-                @foreach (var item in Model)
+                @foreach (var item in Model.RequestType)
                 {
                     <option value='@item.Id' >@item.Name </option>
                 }
             </select>
             </p>
-            <p>Additional details:<br />
-            <textarea cols="50" rows="3" name="comment"></textarea>
-            </p>
-            <input type="submit" name="submit" value="Request" id="sendRequest" />
+            <p>Additional details:</p>
+            <div class="editor-field">
+                @Html.TextAreaFor(model => model.LeaveRequest.Comment, new { rows = "3", cols = "45" })
+                @Html.ValidationMessageFor(m=>m.LeaveRequest.Comment)
+            </div>
+            
+            <input type="submit" name="submit" value="Request" id="sendRequest" /><span id="ajaxMessage"></span>
         </div>
         <div style="clear:both"><!-- END FORM--></div>
-    </form>
+    }
     
 </div>

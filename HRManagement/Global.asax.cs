@@ -44,7 +44,7 @@ namespace HRManagement
             RegisterRoutes(RouteTable.Routes);
         }
     }
-    public class HrDBInitializer : DropCreateDatabaseAlways<HrDB>
+    public class HrDBInitializer : DropCreateDatabaseIfModelChanges<HrDB>
     {
         protected override void Seed(HrDB context)
         {
@@ -67,6 +67,41 @@ namespace HRManagement
                 Id = 3,
                 Name = "Maternal",
                 Visible = 1
+            });
+
+            context.FreeDays.Add(new FreeDay
+            {
+                day = 1,
+                month = 12
+            });
+
+            context.FreeDays.Add(new FreeDay
+            {
+                day = 25,
+                month = 12
+            });
+            context.FreeDays.Add(new FreeDay
+            {
+                day = 26,
+                month = 12
+            });
+            context.FreeDays.Add(new FreeDay
+            {
+                day = 5,
+                month = 7
+            });
+            context.FreeDays.Add(new FreeDay
+            {
+                day = 1,
+                month = 45
+            });
+
+            context.Users.Add(new User
+            {
+                Id = 1,
+                GroupId = 1,
+                Email = "bb",
+                Password = "123456"
             });
 
             context.SaveChanges();
