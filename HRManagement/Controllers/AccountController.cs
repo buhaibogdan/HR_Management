@@ -6,6 +6,9 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Security;
 using HRManagement.Models;
+using HRManagement.Auth;
+using HRManagement.Models.Entities;
+using HRManagement.Infrastructure;
 
 namespace HRManagement.Controllers
 {
@@ -14,7 +17,7 @@ namespace HRManagement.Controllers
 
         //
         // GET: /Account/LogOn
-
+        
         public ActionResult LogOn()
         {
             return View();
@@ -28,9 +31,9 @@ namespace HRManagement.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (Membership.ValidateUser(model.UserName, model.Password))
+                if (Membership.ValidateUser(model.Email, model.Password))
                 {
-                    FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
+                    FormsAuthentication.SetAuthCookie(model.Email, model.RememberMe);
                     if (Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 && returnUrl.StartsWith("/")
                         && !returnUrl.StartsWith("//") && !returnUrl.StartsWith("/\\"))
                     {
@@ -57,13 +60,11 @@ namespace HRManagement.Controllers
         public ActionResult LogOff()
         {
             FormsAuthentication.SignOut();
-
             return RedirectToAction("Index", "Home");
         }
 
         //
         // GET: /Account/Register
-
         public ActionResult Register()
         {
             return View();
@@ -73,22 +74,18 @@ namespace HRManagement.Controllers
         // POST: /Account/Register
 
         [HttpPost]
-        public ActionResult Register(RegisterModel model)
+        public ActionResult Register(User model)
         {
             if (ModelState.IsValid)
             {
                 // Attempt to register the user
-                MembershipCreateStatus createStatus;
-                Membership.CreateUser(model.UserName, model.Password, model.Email, null, null, true, null, out createStatus);
-                
-                if (createStatus == MembershipCreateStatus.Success)
+                UserMembership newUserMembership = new UserMembership();
+                int userId = newUserMembership.CreateUser(model.Email, model.Password);
+
+                if ( 0 != userId )
                 {
-                    FormsAuthentication.SetAuthCookie(model.UserName, false /* createPersistentCookie */);
+                    FormsAuthentication.SetAuthCookie(model.Email, false /* createPersistentCookie */);
                     return RedirectToAction("Index", "Home");
-                }
-                else
-                {
-                    ModelState.AddModelError("", ErrorCodeToString(createStatus));
                 }
             }
 

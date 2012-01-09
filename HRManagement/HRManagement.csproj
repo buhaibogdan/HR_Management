@@ -65,13 +65,20 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Auth\UserAuth.cs" />
+    <Compile Include="Auth\UserMembership.cs" />
+    <Compile Include="Auth\UserRole.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ManageUsersController.cs" />
     <Compile Include="Infrastructure\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LeaveController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\CustomAuthAttr.cs" />
+    <Compile Include="Infrastructure\NoCache.cs" />
+    <Compile Include="Infrastructure\SessionPersister.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Auth\CustomIdentity.cs" />
     <Compile Include="Models\Auth\CustomPrincipal.cs" />
@@ -86,8 +93,16 @@
     <Compile Include="Models\HrDB.cs" />
     <Compile Include="Models\Entities\LeaveRequest.cs" />
     <Compile Include="Models\Entities\RequestType.cs" />
-    <Compile Include="Models\LeaveForm.cs" />
+    <Compile Include="Models\Repositories\EmployeeRepository.cs" />
+    <Compile Include="Models\Repositories\FreeDaysRepository.cs" />
+    <Compile Include="Models\Repositories\GroupRepository.cs" />
+    <Compile Include="Models\Repositories\LeaveRequestRepository.cs" />
+    <Compile Include="Models\Repositories\RequestTypeRepository.cs" />
+    <Compile Include="Models\Repositories\UserRepository.cs" />
+    <Compile Include="ViewModels\EditUserViewModel.cs" />
+    <Compile Include="ViewModels\LeaveFormViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\UserViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\hr.mdf" />
@@ -157,9 +172,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Shared\FreeDays.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -195,6 +207,21 @@
   <ItemGroup>
     <Content Include="Views\Account\_Layout.cshtml" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\ManageUsers\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\ManageUsers\_UserDetails.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\ManageUsers\_UserEdit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\ManageUsers\_.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\ManageUsers\_UserCreate.cshtml" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -212,7 +239,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>52997</DevelopmentServerPort>
+          <DevelopmentServerPort>64632</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

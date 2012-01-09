@@ -1,5 +1,5 @@
-﻿@model HRManagement.Models.LeaveForm
-           
+﻿@model HRManagement.ViewModels.LeaveFormViewModel
+  
 @if (this.ViewContext.FormContext == null)
 {
     this.ViewContext.FormContext = new FormContext();
@@ -47,10 +47,10 @@
             <input type="button" value="Cancel" id="cancelButton"/>
             
             @{
-            if (1 != Model.LeaveRequest.Status)
-            { 
+        if (1 != Model.LeaveRequest.Status)
+        { 
                 <input type="button" value="Remove" id="removeButton"/>
-            }
+        }
             }
         </p>
     </fieldset>

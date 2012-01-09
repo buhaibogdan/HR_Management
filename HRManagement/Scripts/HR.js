@@ -40,6 +40,8 @@
 
     $("#requestForm").live("submit", function (event) {
         event.preventDefault();
+        $(this).validate();
+
         var typeRequest = $("#requestForm :selected").val();
         var user_comment = $('#requestForm textarea').val();
 
@@ -137,5 +139,132 @@
             }
         });
     }
+
+
+    // ------------  MANAGE USERS SECTION --------------------\\
+    $('#ajaxLinkDetails').live('click', function (event) {
+        event.preventDefault();
+        getContent($(this), "GET");
+    });
+
+    $('#ajaxLinkEdit').live('click', function (event) {
+        event.preventDefault();
+        getContent($(this), "GET");
+    });
+
+    $('#ajaxLinkDelete').live('click', function (event) {
+        event.preventDefault();
+        el = $(this);
+        var url = el.attr("href");
+        el.attr("href", "javascript:void(0)");
+        $.ajax({
+            url: url,
+            type: "POST",
+            complete: function (xhr) {
+                if (1 == xhr.responseText) {
+                    el.parent().siblings().css("text-decoration", "line-through");
+                    el.parent().html('Deleted').css({
+                        "text-decoration": "none !important",
+                        "color": "red"
+                    });
+                }
+                else {
+                    el.attr("href", url);
+                    alert("User could not be deleted. Please try again later.");
+                }
+                //text-decoration: line-through;
+            }
+        });
+    });
+
+    function getContent(el, type) {
+        console.time("userDetails");
+        $("div.userDetailsSection").html("<img src='../../Content/images/ajax-loader.gif' />");
+        $.ajax({
+            url: el.attr("href"),
+            type: type,
+            complete: function (xhr) {
+                console.timeEnd("userDetails");
+                $("div.userDetailsSection").hide();
+                $("div.userDetailsSection").html(xhr.responseText);
+                $("div.userDetailsSection").show("highlight");
+                changeButtonsLook();
+                $('#cancelUserEdit').live('click', function () {
+                    $("div.userDetailsSection").hide("highlight");
+                });
+            }
+        });
+    }
+
+    /*************** EDIT USER ****************/
+    $("#userDetailsSection form").live("submit", function (ev) {
+        ev.preventDefault();
+        $(this).validate();
+        console.time("userDetails");
+        $("div.userDetailsSection").html("<img src='../../Content/images/ajax-loader.gif' />");
+        $.ajax({
+            url: "/ManageUsers/Edit/2",
+            type: "POST",
+            data: $(this).serialize(),
+            complete: function (xhr) {
+                console.timeEnd("userDetails");
+                $("div.userDetailsSection").hide();
+                $("div.userDetailsSection").html(xhr.responseText);
+                $("div.userDetailsSection").show("highlight");
+                $("form").each(function () { $.data($(this)[0], 'validator', false); });
+                $.validator.unobtrusive.parse("form");
+            }
+        });
+    });
+
+    /*************** CREATE USER ****************/
+    $('#newUserSection form').live('submit', function (event) {
+        event.preventDefault();
+        $(this).validate();
+        $("#newUserSection").html("<img src='../../Content/images/ajax-loader.gif' />");
+        $.ajax({
+            url: "ManageUsers/Create",
+            type: "POST",
+            data: $(this).serialize(),
+            complete: function (xhr) {
+                $("#newUserSection").hide("highlight");
+                if (1 == xhr.responseText) {
+                    reloadUsersList("User successfully created.");
+                }
+                else {
+                    reloadUsersList("User failed to be created. Try again later.");
+                }
+            }
+        });
+
+    })
+
+    $('#createUserAjaxLink a').live('click', function (ev) {
+        ev.preventDefault();
+        var el = $(this);
+        console.time("userCreate");
+        $("#newUserSection").html("<img src='../../Content/images/ajax-loader.gif' />");
+        $.ajax({
+            url: el.attr("href"),
+            type: "GET",
+            complete: function (xhr) {
+                console.timeEnd("userCreate");
+                $("#newUserSection").hide();
+                $("#newUserSection").html(xhr.responseText);
+                $("#newUserSection").show("blind");
+                changeButtonsLook();
+                $('#cancelCreate').live('click', function () {
+                    $("#newUserSection").hide("blind");
+                });
+            }
+        })
+    });
+
+    function reloadUsersList(additionalText) {
+        var text = additionalText + " Refresh page to view changes.";
+        $('#changedNotification').html(text).css("color", "red");
+    }
+    // ------------ / MANAGE USERS SECTION --------------------\\
+
 })
 

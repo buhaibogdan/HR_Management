@@ -1,9 +1,0 @@
-﻿<div id="daysRequested">
-    Free days requested:
-    <ul class="listRequest">
-        @foreach (var date in ViewBag.DaysRequested)
-        { 
-            <li class="listElementRequest"><span class='list-date'>@date.Day.@date.Month.@date.Year</span><span class="close-button"><img src="../../Content/images/close.png" alt="x"/></span></li>   
-        }
-    </ul>
-</div>

@@ -10,13 +10,13 @@ namespace HRManagement.Models.Entities
     {
         [Key, ForeignKey("Group")]
         [Column(Order = 0)]
-        public int GroupId { get; set; }
+        public virtual int GroupId { get; set; }
 
         [Key, ForeignKey("Right")]
         [Column(Order = 1)]
-        public int RightId { get; set; }
+        public virtual int RightId { get; set; }
 
-        public Group Group { get; set; }
-        public Right Right { get; set; }
+        public virtual Group Group { get; set; }
+        public virtual Right Right { get; set; }
     }
 }

@@ -10,11 +10,15 @@ namespace HRManagement.Models.Entities
     {
         [Key, ForeignKey("User")]
         public virtual int Id { get; set; }
-        [MaxLength(80)]
+
+        [MaxLength(80, ErrorMessage="First Name too long"), Display(Name="First name")]
         public virtual string FirstName { get; set; }
-        [MaxLength(80), Required]
+
+        [MaxLength(80, ErrorMessage = "First Name too long")]
+        [Display(Name="Last name")]
         public virtual string LastName { get; set; }
-        [MaxLength(13)]
+
+        [RegularExpression(@"^.{13}$", ErrorMessage = "Incorrect CNP format.")]
         public virtual string CNP { get; set; }
         public virtual int Manager { get; set; }
 

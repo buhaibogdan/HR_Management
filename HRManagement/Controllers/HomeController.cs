@@ -8,13 +8,12 @@ using HRManagement.Models;
 
 namespace HRManagement.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         public ActionResult Index()
         {
-            Session["DaysRequested"] = null;   
             return View();
-             
         }
 
         public ActionResult Help()
@@ -27,10 +26,5 @@ namespace HRManagement.Controllers
             return View();
         }
 
-        public PartialViewResult Hello()
-        {
-            Thread.Sleep(1500);
-            return PartialView("FreeDays");
-        }
     }
 }

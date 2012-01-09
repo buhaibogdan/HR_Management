@@ -8,18 +8,22 @@ using HRManagement.Models;
 using HRManagement.Models.Entities;
 using System.Web.Services;
 using System.Threading;
+using HRManagement.Infrastructure;
+using HRManagement.ViewModels;
 
 namespace HRManagement.Controllers
 {
 
+    [CustomAuthAttr(CustomAuthAttr.manageUsers)]
     public class LeaveController : Controller
     {
         HrDB _db = new HrDB();
         private List<DateTime> DaysRequested;
-        
+
         public ActionResult Index()
         {
-            var model = new LeaveForm();
+            var name = User.Identity.Name;
+            var model = new LeaveFormViewModel();
             model.RequestType = _db.RequestTypes;
             return View(model);
         }
@@ -87,11 +91,13 @@ namespace HRManagement.Controllers
             {
                 return "You did not choose a day.";
             }
+            User usr = (User)SessionPersister.get("userDetails");
+
             LeaveRequest newLeaveRequest = new LeaveRequest()
             {
                 RequestTypeId = type,
                 Comment = user_comment.Trim(),
-                UserId = 1
+                UserId = usr.Id
             };
             LeaveRequest.Add(newLeaveRequest);
             try
@@ -187,9 +193,9 @@ namespace HRManagement.Controllers
             return 1;
         }
 
-        private LeaveForm GetRequest(int id)
+        private LeaveFormViewModel GetRequest(int id)
         {// ar merge in LeaveForm Class
-            var model = new LeaveForm();
+            var model = new LeaveFormViewModel();
             model.LeaveRequest = _db.LeaveRequests.Single(r => r.Id == id);
             model.LeaveRequest.RequestedDays = _db.RequestedDays.Where(r => r.LeaveRequestId == id);
             model.RequestType = _db.RequestTypes.ToList<RequestType>();

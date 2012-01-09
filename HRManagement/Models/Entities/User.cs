@@ -3,30 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 
 namespace HRManagement.Models.Entities
 {
     public class User
     {
-        public int Id { get; set; }
+        public virtual int Id { get; set; }
         [Required, MaxLength(50)]
-        public string Email { get; set; }
+        public virtual string Email { get; set; }
         [Required, MaxLength(80)]
-        public string Password { get; set; }
-        [Required]
-        public int GroupId { get; set; }
+        public virtual string Password { get; set; }
+        [NotMapped, Compare("Password")]
+        public virtual string ConfirmPassword { get; set; }
 
-        public Employee Employee { get; set; }
+        [Required, ForeignKey("Group")]
+        public virtual int GroupId { get; set; }
 
-        public static bool validateCredentials(string email, string pass)
+        public virtual Employee Employee { get; set; }
+        public virtual Group Group { get; set; }
+
+        public string GetFullName()
         {
-            HrDB db = new HrDB();
-            User authUser = db.Users.Single(u => (u.Email == email && u.Password == pass));
-            if (null != authUser)
-            {
-                return true;
-            }
-            return false;
+            return Employee.FirstName + " " + Employee.LastName;
         }
+
     }
 }

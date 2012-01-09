@@ -11,3 +11,4 @@ E:\csharp\HRManagement\HRManagement.Test\obj\Debug\HRManagement.Test.dll
 E:\csharp\HRManagement\HRManagement.Test\obj\Debug\HRManagement.Test.pdb
 E:\csharp\HRManagement\HRManagement.Test\bin\Debug\EntityFramework.dll
 E:\csharp\HRManagement\HRManagement.Test\bin\Debug\EntityFramework.xml
+E:\csharp\HRManagement\HRManagement.Test\bin\Debug\MvcContrib.TestHelper.xml

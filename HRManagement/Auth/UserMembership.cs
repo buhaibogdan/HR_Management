@@ -3,11 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Security;
+using HRManagement.Models.Entities;
+using HRManagement.Models;
 
 namespace HRManagement.Auth
 {
     public class UserMembership : MembershipProvider
     {
+
+        private HrDB _db = new HrDB();
+
         public override string ApplicationName
         {
             get
@@ -32,7 +37,7 @@ namespace HRManagement.Auth
 
         public override MembershipUser CreateUser(string username, string password, string email, string passwordQuestion, string passwordAnswer, bool isApproved, object providerUserKey, out MembershipCreateStatus status)
         {
-            throw new NotImplementedException();
+            throw new NotImplementedException();   
         }
 
         public override bool DeleteUser(string username, bool deleteAllRelatedData)
@@ -87,7 +92,8 @@ namespace HRManagement.Auth
 
         public override string GetUserNameByEmail(string email)
         {
-            throw new NotImplementedException();
+            User user = _db.Users.SingleOrDefault(u => u.Email == email);
+            return user.Employee.FirstName;
         }
 
         public override int MaxInvalidPasswordAttempts
@@ -102,7 +108,7 @@ namespace HRManagement.Auth
 
         public override int MinRequiredPasswordLength
         {
-            get { throw new NotImplementedException(); }
+            get { return 3; }
         }
 
         public override int PasswordAttemptWindow
@@ -127,7 +133,7 @@ namespace HRManagement.Auth
 
         public override bool RequiresUniqueEmail
         {
-            get { throw new NotImplementedException(); }
+            get { return true; }
         }
 
         public override string ResetPassword(string username, string answer)
@@ -145,9 +151,33 @@ namespace HRManagement.Auth
             throw new NotImplementedException();
         }
 
-        public override bool ValidateUser(string username, string password)
+        public int CreateUser(string email, string password)
         {
-            throw new NotImplementedException();
+            User newUser = new User();
+            newUser.Email = email;
+            newUser.Password = password;
+            newUser.GroupId = 5;
+            try
+            {
+                _db.Users.Add(newUser);
+                _db.SaveChanges();
+                return newUser.Id;
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+        }
+
+        public override bool ValidateUser(string email, string password)
+        {
+            User authUser = _db.Users.SingleOrDefault(u => (u.Email == email && u.Password == password));
+            if (null != authUser)
+            {
+                Infrastructure.SessionPersister.add("userDetails", authUser);
+                return true;
+            }
+            return false;
         }
     }
 }
