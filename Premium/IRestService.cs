@@ -4,14 +4,46 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using System.ServiceModel.Web;
 
 namespace Premium
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IRestService" in both code and config file together.
     [ServiceContract]
+    [XmlSerializerFormat]
     public interface IRestService
     {
+
         [OperationContract]
-        void DoWork();
+        [WebInvoke(Method = "GET",
+            ResponseFormat = WebMessageFormat.Xml,
+            BodyStyle = WebMessageBodyStyle.Wrapped,
+            UriTemplate = "GetNetIncome/{UsereEmail}")]
+        int GetNetIncome(string UsereEmail);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET",
+            ResponseFormat = WebMessageFormat.Xml,
+            BodyStyle = WebMessageBodyStyle.Wrapped,
+            UriTemplate = "GetGrossIncome/{UsereEmail}")]
+        int GetGrossIncome(string UsereEmail);
+
+
+        [OperationContract]
+        [WebInvoke(Method = "GET",
+            ResponseFormat = WebMessageFormat.Xml,
+            BodyStyle = WebMessageBodyStyle.Bare,
+            UriTemplate = "GetContributions/")]
+        List<string> GetContributions();
+    }
+
+    [DataContract]
+    public class Salary
+    { 
+        [DataMember]
+        public string email {get;set;} 
+        [DataMember]
+        public int NetIncome {get;set;}
+        [DataMember]
+        public int GrossIncome {get;set;}
     }
 }

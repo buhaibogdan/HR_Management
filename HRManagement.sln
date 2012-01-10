@@ -2,6 +2,9 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Web Developer Express 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRManagement", "HRManagement\HRManagement.csproj", "{51CD5BE8-F125-4D3A-92D5-FDE7A0585712}"
+	ProjectSection(ProjectDependencies) = postProject
+		{98EF361C-8125-4A53-8656-BFB7A7C1C5D1} = {98EF361C-8125-4A53-8656-BFB7A7C1C5D1}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRManagement.Test", "HRManagement.Test\HRManagement.Test.csproj", "{1765519B-DC85-427D-B1C7-15220D9204D3}"
 EndProject

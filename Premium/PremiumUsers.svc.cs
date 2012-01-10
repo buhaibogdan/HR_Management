@@ -5,33 +5,18 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using Premium.Users;
 
 namespace Premium
 {
     public class PremiumUsers : IService1
     {
-        public string GetData(int value)
-        {
-            return string.Format("You entered: {0}", value);
-        }
 
-        public CompositeType GetDataUsingDataContract(CompositeType composite)
+        public string GetReqForUserType(string userType)
         {
-            if (composite == null)
-            {
-                throw new ArgumentNullException("composite");
-            }
-            if (composite.BoolValue)
-            {
-                composite.StringValue += "Suffix";
-            }
-            return composite;
-        }
-
-        
-        public bool isPremiumUser(string email)
-        {
-            return true;
+            UserFactory userFactory = new UserFactory();
+            IUser user = userFactory.CreateInstance(userType);
+            return user.GetMinPoints();
         }
 
         public HomeAddress GetHomeAddress(string email)

@@ -1,17 +1,29 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!--This file represents the results of running a test suite-->
-<test-results name="E:\csharp\HRManagement\HRManagement.Test\bin\Debug\HRManagement.Test.dll" total="1" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2012-01-09" time="08:29:41">
+<test-results name="E:\csharp\HRManagement\HRManagement.Test\bin\Debug\HRManagement.Test.dll" total="5" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2012-01-10" time="23:38:16">
   <environment nunit-version="2.5.10.11092" clr-version="2.0.50727.5444" os-version="Microsoft Windows NT 6.1.7601 Service Pack 1" platform="Win32NT" cwd="E:\csharp\HRManagement\packages\NUnit.2.5.10.11092\tools" machine-name="BB-PC" user="bb" user-domain="bb-PC" />
   <culture-info current-culture="en-US" current-uiculture="en-US" />
-  <test-suite type="Assembly" name="E:\csharp\HRManagement\HRManagement.Test\bin\Debug\HRManagement.Test.dll" executed="True" result="Success" success="True" time="3.011" asserts="0">
+  <test-suite type="Assembly" name="E:\csharp\HRManagement\HRManagement.Test\bin\Debug\HRManagement.Test.dll" executed="True" result="Success" success="True" time="0.096" asserts="0">
     <results>
-      <test-suite type="Namespace" name="HRManagement" executed="True" result="Success" success="True" time="3.003" asserts="0">
+      <test-suite type="Namespace" name="HRManagement" executed="True" result="Success" success="True" time="0.095" asserts="0">
         <results>
-          <test-suite type="Namespace" name="Test" executed="True" result="Success" success="True" time="3.003" asserts="0">
+          <test-suite type="Namespace" name="Test" executed="True" result="Success" success="True" time="0.095" asserts="0">
             <results>
-              <test-suite type="TestFixture" name="SessionPersisterTests" executed="True" result="Success" success="True" time="3.003" asserts="0">
+              <test-suite type="TestFixture" name="HomeControllerTests" executed="True" result="Success" success="True" time="0.003" asserts="0">
                 <results>
-                  <test-case name="HRManagement.Test.SessionPersisterTests.LeaveRequestControllerTest" executed="True" result="Success" success="True" time="2.995" asserts="1" />
+                  <test-case name="HRManagement.Test.HomeControllerTests.testingStuff" executed="True" result="Success" success="True" time="0.002" asserts="1" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="LeaveControllerTests" executed="True" result="Success" success="True" time="0.044" asserts="0">
+                <results>
+                  <test-case name="HRManagement.Test.LeaveControllerTests.shouldAddDateToSession" executed="True" result="Success" success="True" time="0.001" asserts="1" />
+                  <test-case name="HRManagement.Test.LeaveControllerTests.shouldNotAddDuplicateDateToSession" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="HRManagement.Test.LeaveControllerTests.shouldRemoveDateFromSession" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="SessionPersisterTests" executed="True" result="Success" success="True" time="0.011" asserts="0">
+                <results>
+                  <test-case name="HRManagement.Test.SessionPersisterTests.LeaveRequestControllerTest" executed="True" result="Success" success="True" time="0.009" asserts="1" />
                 </results>
               </test-suite>
             </results>

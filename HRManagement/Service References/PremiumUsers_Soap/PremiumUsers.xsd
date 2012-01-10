@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Premium" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Premium" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="HomeAddress">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Apartment" type="xs:int" />
+      <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Number" type="xs:int" />
+      <xs:element minOccurs="0" name="PostalCode" type="xs:int" />
+      <xs:element minOccurs="0" name="Street" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="HomeAddress" nillable="true" type="tns:HomeAddress" />
+</xs:schema>

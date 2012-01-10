@@ -54,7 +54,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="PremiumUsers.svc" />
-    <Content Include="Web.config" />
+    <Content Include="RestService.svc" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -63,11 +66,21 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IRestService.cs" />
     <Compile Include="PremiumUsers.svc.cs">
       <DependentUpon>PremiumUsers.svc</DependentUpon>
     </Compile>
     <Compile Include="IService1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RestService.svc.cs">
+      <DependentUpon>RestService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="UserFactory.cs" />
+    <Compile Include="Users\IUser.cs" />
+    <Compile Include="Users\NormalUser.cs" />
+    <Compile Include="Users\NullUser.cs" />
+    <Compile Include="Users\PremiumUser.cs" />
+    <Compile Include="Users\VIPUser.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

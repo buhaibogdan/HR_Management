@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="8dc21bd6-3c1b-4255-9890-c84e4d0c5f20" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:50616/RestService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="RestService.xsd" MetadataType="Schema" ID="0c7269f1-ffee-4658-a1a9-c34f8f9ba7cb" SourceId="1" SourceUrl="http://localhost:50616/RestService.svc?xsd=xsd0" />
+    <MetadataFile FileName="RestService.wsdl" MetadataType="Wsdl" ID="2b7cd444-74ae-4426-b386-0bd51cdea66d" SourceId="1" SourceUrl="http://localhost:50616/RestService.svc?wsdl" />
+    <MetadataFile FileName="RestService.disco" MetadataType="Disco" ID="3e74b483-c3b1-4a0a-9c87-36e6a43cf36a" SourceId="1" SourceUrl="http://localhost:50616/RestService.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

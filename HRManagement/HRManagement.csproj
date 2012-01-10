@@ -42,6 +42,7 @@
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Web.Helpers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
@@ -99,6 +100,16 @@
     <Compile Include="Models\Repositories\LeaveRequestRepository.cs" />
     <Compile Include="Models\Repositories\RequestTypeRepository.cs" />
     <Compile Include="Models\Repositories\UserRepository.cs" />
+    <Compile Include="Service References\PremiumUsers_Soap\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\Salary_Restfull\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\EditUserViewModel.cs" />
     <Compile Include="ViewModels\LeaveFormViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -137,6 +148,30 @@
     <Content Include="Scripts\modernizr-1.7.js" />
     <Content Include="Scripts\modernizr-1.7.min.js" />
     <Content Include="Scripts\HR.js" />
+    <None Include="Service References\PremiumUsers_Soap\HRManagement.PremiumUsers_Soap.HomeAddress.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\PremiumUsers_Soap\PremiumUsers.wsdl" />
+    <None Include="Service References\PremiumUsers_Soap\PremiumUsers.xsd" />
+    <None Include="Service References\PremiumUsers_Soap\PremiumUsers1.xsd" />
+    <None Include="Service References\PremiumUsers_Soap\PremiumUsers2.xsd" />
+    <None Include="Service References\Salary_Restfull\HRManagement.Salary_Restfull.ArrayOfString.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Salary_Restfull\RestService.disco" />
+    <None Include="Service References\Salary_Restfull\configuration91.svcinfo" />
+    <None Include="Service References\Salary_Restfull\configuration.svcinfo" />
+    <None Include="Service References\Salary_Restfull\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\PremiumUsers_Soap\PremiumUsers.disco" />
+    <None Include="Service References\PremiumUsers_Soap\configuration91.svcinfo" />
+    <None Include="Service References\PremiumUsers_Soap\configuration.svcinfo" />
+    <None Include="Service References\PremiumUsers_Soap\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -221,6 +256,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\ManageUsers\_UserCreate.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\PremiumUsers_Soap\" />
+    <WCFMetadataStorage Include="Service References\Salary_Restfull\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Salary_Restfull\RestService.wsdl" />
+    <None Include="Service References\Salary_Restfull\RestService.xsd" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
