@@ -61,16 +61,16 @@ namespace HRManagement.Models.Repositories
 
         public bool Save()
         {
-            //try
-            //{
+            try
+            {
                 var errors = _db.GetValidationErrors();
                 _db.SaveChanges();
                 return true;
-            //}
-            //catch (Exception)
-           // {
-            //    return false;
-            //}
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
     }
 }
