@@ -1,0 +1,33 @@
+﻿@model HRManagement.Models.Entities.User
+
+<fieldset>
+    <legend>@Model.GetFullName()</legend>
+    
+    <div>
+    <span class="item-name">ID</span>
+    <span class="item-value">
+        @Html.DisplayFor(model => model.Id)   
+    </span>
+    </div>
+
+    <div>
+    <span class="item-name">Email</span>
+    <span class="item-value">
+        @Html.DisplayFor(model => model.Email)
+    </span>
+    </div>
+
+    <div>
+    <span class="item-name">CNP</span>
+    <span class="item-value">
+        @Html.DisplayFor(model => model.Employee.CNP)
+    </span>
+    </div>
+
+    <div>
+        <span class="item-name">Group</span>
+        <span class="item-value">
+            @Html.DisplayFor(model => model.Group.Name)
+        </span>
+    </div>
+</fieldset>

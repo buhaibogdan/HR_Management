@@ -1,0 +1,43 @@
+﻿@model HRManagement.ViewModels.UserViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Manage Users</h2>
+<div id="userDetailsSection" class="userDetailsSection"></div>
+<p id="changedNotification"></p>
+<table>
+    <tr>
+        <th></th>
+        <th>Id</th>
+        <th>Email</th>
+        <th>Group</th>
+   </tr>
+@foreach (var item in Model.Users) {
+    <tr>
+        <td class="opIconsMore">
+            <a href='@Url.Action("Edit", "ManageUsers", new { id = item.Id })' id="ajaxLinkEdit">
+                <img src='@Url.Content("~/Content/images/edit.png")' alt="Edit" /></a>
+            <a href='@Url.Action("Details", "ManageUsers", new { id = item.Id })' id="ajaxLinkDetails">
+                <img src='@Url.Content("~/Content/images/details.png")' alt="Details" /></a>
+            <a href='@Url.Action("Delete", "ManageUsers", new { id = item.Id })' id="ajaxLinkDelete">
+                <img src='@Url.Content("~/Content/images/close.png")' alt="Delete" /></a>
+        </td>
+        <td>
+            @item.Id
+        </td>
+        <td>
+           @item.Email
+        </td>
+        <td>
+           @item.Group.Name
+        </td>
+    </tr>   
+}
+
+</table>
+<p id="createUserAjaxLink">
+    @Html.ActionLink("Create User", "Create")
+</p>
+<div id="newUserSection" class="newUserSection"></div>

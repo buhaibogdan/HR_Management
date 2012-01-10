@@ -1,0 +1,5 @@
+E:\csharp\HRManagement\Premium\obj\Debug\ResolveAssemblyReference.cache
+E:\csharp\HRManagement\Premium\bin\Premium.pdb
+E:\csharp\HRManagement\Premium\obj\Debug\Premium.dll
+E:\csharp\HRManagement\Premium\obj\Debug\Premium.pdb
+E:\csharp\HRManagement\Premium\bin\Premium.dll
