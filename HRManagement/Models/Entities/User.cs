@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
+using System.Security.Cryptography;
 
 namespace HRManagement.Models.Entities
 {
@@ -28,5 +29,17 @@ namespace HRManagement.Models.Entities
             return Employee.FirstName + " " + Employee.LastName;
         }
 
+        public static string Md5EncryptPassword(string password)
+        {
+            byte[] originalBytes;
+            byte[] encryptedBytes;
+
+            MD5 md5 = new MD5CryptoServiceProvider();
+
+            originalBytes = System.Text.ASCIIEncoding.Default.GetBytes(password);
+            encryptedBytes = md5.ComputeHash(originalBytes);
+
+            return BitConverter.ToString(encryptedBytes);
+        }
     }
 }

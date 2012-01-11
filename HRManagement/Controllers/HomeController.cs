@@ -17,6 +17,8 @@ namespace HRManagement.Controllers
     {
         public ActionResult Index()
         {
+            string pas1 = HRManagement.Models.Entities.User.Md5EncryptPassword("ceva");
+            string pas2 = HRManagement.Models.Entities.User.Md5EncryptPassword("ceva");
             return View();
         }
 

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using HRManagement.Models.Entities;
+
 
 namespace HRManagement.Models.Repositories
 {
@@ -10,11 +12,8 @@ namespace HRManagement.Models.Repositories
         private HrDB _db = new HrDB();
         private static LeaveRequestRepository _referenceToSelf;
 
-        private LeaveRequestRepository()
-        { 
-            
-        }
-
+        private LeaveRequestRepository() { }    
+      
         public static LeaveRequestRepository GetInstance()
         {
             if (_referenceToSelf == null)
@@ -24,7 +23,15 @@ namespace HRManagement.Models.Repositories
             return _referenceToSelf;
         }
 
-        //other here
+        public IQueryable<LeaveRequest> GetAllRequests()
+        {
+            return _db.LeaveRequests;
+        }
+
+        public LeaveRequest GetRequestById(int id)
+        {
+            return _db.LeaveRequests.Find(id);
+        }
 
     }
 }

@@ -64,6 +64,7 @@
   <ItemGroup>
     <Compile Include="HomeControllerTests.cs" />
     <Compile Include="LeaveControllerTests.cs" />
+    <Compile Include="LeaveRequestRepositoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SessionPersisterTests.cs" />
   </ItemGroup>
